@@ -1,25 +1,31 @@
 import init.st-ericsson.usb.rc
 import init.st-ericsson.device.rc
 
-on init
-    # setup the global environment
-    export OMX_STE_ENS_COMPONENTS_DIR /system/lib/ste_omxcomponents/
-    export OMX_BELLAGIO_LOADER_REGISTRY /system/etc/omxloaders
+on early-init
 
     # create mountpoints
-    mkdir /storage 0050 system sdcard_r
-    mkdir /storage/sdcard0 0000 system system
-    mkdir /storage/sdcard1 0000 system system
-    symlink /storage/sdcard0 /mnt/sdcard
+    mkdir /storage 0775 system system
+    mkdir /storage/sdcard0 0775 system system
+    mkdir /storage/sdcard1 0775 system system
+    mkdir /storage/usbdisk 0775 system system
+    mkdir /mnt 0755 root system
+    
+    # for backwards compatibility
     symlink /storage/sdcard0 /sdcard
-    symlink /storage/sdcard1 /mnt/external_sd
-    symlink /storage/sdcard1 /external_sd
+    symlink /storage/sdcard0 /mnt/sdcard
+    symlink /storage/sdcard1 /extSdCard
+    symlink /storage/sdcard1 /mnt/extSdCard
+    symlink /storage/usbdisk /usbdisk0
+    symlink /storage/usbdisk /mnt/usbdisk0
 
     export EXTERNAL_STORAGE /storage/sdcard0
     export SECONDARY_STORAGE /storage/sdcard1
     export EXTERNAL_STORAGE_USB /mnt/usbdisk
 
-    mkdir /mnt/usbdisk 0755 system system
+on init
+    # setup the global environment
+    export OMX_STE_ENS_COMPONENTS_DIR /system/lib/ste_omxcomponents/
+    export OMX_BELLAGIO_LOADER_REGISTRY /system/etc/omxloaders
 
     mkdir /modemfs 0771 system system
 
