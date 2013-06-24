@@ -110,4 +110,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=mtp,adb \
     wifi.interface=wlan0
-
+    
+# default.prop will be overriden to include adb after the mtp string :)
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    persist.sys.usb.config=mtp \
+    persist.service.adb.enable=1
