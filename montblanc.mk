@@ -62,7 +62,12 @@ PRODUCT_PACKAGES += \
 
 # Misc
 PRODUCT_PACKAGES += \
-   com.android.future.usb.accessory
+   audio.a2dp.default \
+   audio.usb.default \
+   com.android.future.usb.accessory \
+   libaudioutils \
+   libtinyalsa \
+   libnetcmdiface
 
 #Fmradio
 #PRODUCT_PACKAGES += \
