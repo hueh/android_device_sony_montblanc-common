@@ -34,6 +34,7 @@ PRODUCT_COPY_FILES += \
     device/sony/montblanc-common/config/egl.cfg:system/lib/egl/egl.cfg \
     device/sony/montblanc-common/config/asound.conf:system/etc/asound.conf \
     device/sony/montblanc-common/config/dbus.conf:system/etc/dbus.conf \
+    device/sony/montblanc-common/config/13omxcp:system/etc/init.d/13omxcp \
     device/sony/montblanc-common/config/sysmon.cfg:system/etc/sysmon.cfg \
     device/sony/montblanc-common/config/hostapd.conf:system/etc/wifi/hostapd.conf \
     device/sony/montblanc-common/config/01stesetup:system/etc/init.d/01stesetup \
