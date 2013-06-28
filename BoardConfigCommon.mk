@@ -60,6 +60,9 @@ COMMON_GLOBAL_CFLAGS += -DSTE_HARDWARE
 # Lights
 TARGET_PROVIDES_LIBLIGHTS := true
 
+# Vold
+TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/platform/musb-ux500.0/musb-hdrc/gadget/lun%d/file"
+
 # Custom boot
 TARGET_PROVIDES_INIT_RC := true
 TARGET_RECOVERY_PRE_COMMAND := "touch /cache/recovery/boot;sync;"
