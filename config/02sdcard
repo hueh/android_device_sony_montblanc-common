@@ -1,0 +1,6 @@
+#!/system/bin/sh
+#
+# A simple script to mount sdcard
+#
+
+mount -t vfat /dev/block/mmcblk0p14 /storage/sdcard0
