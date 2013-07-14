@@ -72,6 +72,8 @@ on init
     chown bluetooth bluetooth /sys/class/rfkill/rfkill1/state
     chmod 664 /sys/class/rfkill/rfkill1/state
 
+
+
 on fs
     # If you change anything here, make sure to update
     # <root>/vendor/semc/system/bootstrap/masterreset/fstab.riogrande
@@ -149,9 +151,16 @@ on post-fs
     write /sys/devices/platform/musb-ux500.0/musb-hdrc/gadget/lun0/nofua 1
     write /sys/devices/platform/musb-ux500.0/musb-hdrc/gadget/lun1/nofua 1
 
+# Peremissions for bluetooth
+    # UART device
+    chown bluetooth net_bt_stack /dev/ttyAMA0
+    chmod 0660 /dev/ttyAMA0
+
 on post-fs-data
     # create basic filesystem structure
     mkdir /data/misc/hcid 0770 bluetooth bluetooth
+    mkdir /data/misc/bluetoothd 0770 bluetooth bluetooth
+    mkdir /data/misc/bluetooth 0770 system system
     mkdir /data/misc/psdata
 
     # give system access to ril_config

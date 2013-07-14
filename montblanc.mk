@@ -103,8 +103,13 @@ PRODUCT_COPY_FILES += \
 
 # GPS
 PRODUCT_COPY_FILES += \
-    device/sony/montblanc-common/config/gps.conf:system/etc/gps.conf\
+    device/sony/montblanc-common/config/gps.conf:system/etc/gps.conf \
     device/sony/montblanc-common/config/cacert.txt:system/etc/suplcert/cacert.txt
+
+#BT
+PRODUCT_COPY_FILES += \
+    device/sony/montblanc-common/bluetooth/bt_vendor.conf:system/etc/bluetooth/bt_vendor.conf 
+
 
 PRODUCT_PROPERTY_OVERRIDES += \
     sys.mem.max_hidden_apps=10
