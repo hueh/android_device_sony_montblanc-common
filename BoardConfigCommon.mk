@@ -67,6 +67,10 @@ COMMON_GLOBAL_CFLAGS += -DSTE_HARDWARE
 # Lights
 TARGET_PROVIDES_LIBLIGHTS := true
 
+#RIL
+
+BOARD_RIL_CLASS := ../../../device/sony/montblanc-common/ril/
+
 # Vold
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/platform/musb-ux500.0/musb-hdrc/gadget/lun%d/file"
 
