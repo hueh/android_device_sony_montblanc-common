@@ -5,7 +5,6 @@ on init
 
     # for backwards compatibility
     
-    mkdir /mnt/shell/emulated 0700 shell shell
     mkdir /mnt 0755 root system
     mkdir /storage 0775 system sdcard_r
     mkdir /storage/sdcard0 0775 system system
@@ -17,17 +16,10 @@ on init
     symlink /storage/sdcard1 /mnt/extSdCard
     symlink /storage/usbdisk /usbdisk
     symlink /storage/usbdisk /mnt/usbdisk
-    mkdir /storage/emulated 0555 root root
 
-    export EXTERNAL_STORAGE /storage/emulated/legacy
-    export EMULATED_STORAGE_SOURCE /mnt/shell/emulated
-    export EMULATED_STORAGE_TARGET /storage/emulated
-    
-    # For backwards compatibility
-    symlink /storage/emulated/legacy /sdcard
-    symlink /storage/emulated/legacy /mnt/sdcard
-    symlink /storage/emulated/legacy /storage/sdcard0
-    symlink /mnt/shell/emulated/0 /storage/emulated/legacy
+    export EXTERNAL_STORAGE /storage/sdcard0
+    export SECONDARY_STORAGE /storage/sdcard1
+    export EXTERNAL_STORAGE_USB /mnt/usbdisk
 
     # setup the global environment
     export OMX_STE_ENS_COMPONENTS_DIR /system/lib/ste_omxcomponents/
