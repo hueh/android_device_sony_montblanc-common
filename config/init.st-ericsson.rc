@@ -3,11 +3,22 @@ import init.st-ericsson.device.rc
 
 on init
 
-    # for testing
+    # for backwards compatibility
     
-    mkdir /mnt/sdcard 0000 system system
-    symlink /mnt/sdcard /sdcard
+    mkdir /mnt 0755 root system
+    mkdir /storage 0775 system sdcard_r
+    mkdir /storage/sdcard0 0775 system system
+    mkdir /storage/sdcard1 0775 system system
+    mkdir /storage/usbdisk 0775 system system
+    symlink /storage/sdcard0 /sdcard
+    symlink /storage/sdcard0 /mnt/sdcard
+    symlink /storage/sdcard1 /extSdCard
+    symlink /storage/sdcard1 /mnt/extSdCard
+    symlink /storage/usbdisk /usbdisk
+    symlink /storage/usbdisk /mnt/usbdisk
 
+    export EXTERNAL_STORAGE /storage/sdcard0
+    export SECONDARY_STORAGE /storage/sdcard1
     export EXTERNAL_STORAGE_USB /mnt/usbdisk
 
     # setup the global environment
@@ -610,4 +621,3 @@ service suntrold /system/bin/suntrold
 service xssm /system/bin/xssm
     class main
     socket xssm stream 0660 root system
-
