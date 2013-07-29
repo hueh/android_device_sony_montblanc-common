@@ -32,7 +32,7 @@ import com.android.internal.telephony.dataconnection.DataCallResponse;
  *
  * {@hide}
  */
-public class SSonyU8500RIL extends RIL implements CommandsInterface {
+public class SonyU8500RIL extends RIL implements CommandsInterface {
     public SonyU8500RIL(Context context, int networkMode, int cdmaSubscription) {
         super(context, networkMode, cdmaSubscription);
     }
