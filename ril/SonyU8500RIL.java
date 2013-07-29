@@ -25,13 +25,15 @@ import android.os.Parcel;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.android.internal.telephony.dataconnection.DataCallResponse;
+
 /*
- * Custom NovaThor SimReady RIL for Sony Radio
+ * Custom Qualcomm No SimReady RIL for Sony 8x60 Radio
  *
  * {@hide}
  */
-public class SonyU8500RIL extends RIL implements CommandsInterface {
-    public SonyU8500RIL(Context context, int networkMode, int cdmaSubscription) {
+public class SonyQualcomm8x60RIL extends RIL implements CommandsInterface {
+    public SonyQualcomm8x60RIL(Context context, int networkMode, int cdmaSubscription) {
         super(context, networkMode, cdmaSubscription);
     }
 
@@ -40,18 +42,18 @@ public class SonyU8500RIL extends RIL implements CommandsInterface {
     dial(String address, int clirMode, UUSInfo uusInfo, Message result) {
         RILRequest rr = RILRequest.obtain(RIL_REQUEST_DIAL, result);
 
-        rr.mp.writeString(address);
-        rr.mp.writeInt(clirMode);
+        rr.mParcel.writeString(address);
+        rr.mParcel.writeInt(clirMode);
 
         if (uusInfo == null) {
-            rr.mp.writeInt(0); // UUS information is absent
+            rr.mParcel.writeInt(0); // UUS information is absent
         } else {
-            rr.mp.writeInt(1); // UUS information is present
-            rr.mp.writeInt(uusInfo.getType());
-            rr.mp.writeInt(uusInfo.getDcs());
-            rr.mp.writeByteArray(uusInfo.getUserData());
+            rr.mParcel.writeInt(1); // UUS information is present
+            rr.mParcel.writeInt(uusInfo.getType());
+            rr.mParcel.writeInt(uusInfo.getDcs());
+            rr.mParcel.writeByteArray(uusInfo.getUserData());
         }
-        rr.mp.writeInt(255);
+        rr.mParcel.writeInt(255);
 
         if (RILJ_LOGD) riljLog(rr.serialString() + "> " + requestToString(rr.mRequest));
 
@@ -67,8 +69,8 @@ public class SonyU8500RIL extends RIL implements CommandsInterface {
         else
             rr = RILRequest.obtain(RIL_REQUEST_SET_NETWORK_SELECTION_MANUAL, response);
 
-        rr.mp.writeString(operatorNumeric);
-        rr.mp.writeInt(-1);
+        rr.mParcel.writeString(operatorNumeric);
+        rr.mParcel.writeInt(-1);
 
         send(rr);
     }
