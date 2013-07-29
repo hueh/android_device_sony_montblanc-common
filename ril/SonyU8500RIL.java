@@ -28,12 +28,12 @@ import android.util.Log;
 import com.android.internal.telephony.dataconnection.DataCallResponse;
 
 /*
- * Custom Qualcomm No SimReady RIL for Sony 8x60 Radio
+ * Custom NovaThor No SimReady RIL for Sony Radio
  *
  * {@hide}
  */
-public class SonyQualcomm8x60RIL extends RIL implements CommandsInterface {
-    public SonyQualcomm8x60RIL(Context context, int networkMode, int cdmaSubscription) {
+public class SSonyU8500RIL extends RIL implements CommandsInterface {
+    public SonyU8500RIL(Context context, int networkMode, int cdmaSubscription) {
         super(context, networkMode, cdmaSubscription);
     }
 
