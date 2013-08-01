@@ -140,6 +140,9 @@ on post-fs
     # once everything is setup, no need to modify /
     mount rootfs rootfs / ro remount
     
+    #sd card test 
+    mount -t vfat /dev/block/mmcblk0p14 /storage/sdcard0
+    
     # mount shared so changes propagate into child namespaces
     mount rootfs rootfs / shared rec
     mount tmpfs tmpfs /mnt/secure private rec
