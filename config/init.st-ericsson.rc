@@ -3,10 +3,23 @@ import init.st-ericsson.device.rc
 
 on init
 
-    # for testing
-    export EXTERNAL_STORAGE /mnt/sdcard
-    mkdir /mnt/sdcard 0000 system system
-    symlink /mnt/sdcard /sdcard
+
+    # for backwards compatibility
+
+	mkdir /mnt 0755 root system
+	mkdir /storage 0775 system sdcard_r
+	mkdir /storage/sdcard0 0775 system system
+	mkdir /storage/sdcard1 0775 system system
+	mkdir /storage/usbdisk 0775 system system
+	symlink /storage/sdcard0 /sdcard
+	symlink /storage/sdcard0 /mnt/sdcard
+	symlink /storage/sdcard1 /ext_sdcard
+	symlink /storage/sdcard1 /mnt/ext_sdcard
+	symlink /storage/usbdisk /usbdisk
+	symlink /storage/usbdisk /mnt/usbdisk
+
+	export EXTERNAL_STORAGE /mnt/sdcard
+	export SECONDARY_STORAGE /mnt/ext_sdcard
 
     export EXTERNAL_STORAGE_USB /mnt/usbdisk
 
@@ -610,4 +623,3 @@ service suntrold /system/bin/suntrold
 service xssm /system/bin/xssm
     class main
     socket xssm stream 0660 root system
-
