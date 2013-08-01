@@ -4,7 +4,7 @@ import init.st-ericsson.device.rc
 on init
 
     # for testing
-    
+    export EXTERNAL_STORAGE /mnt/sdcard
     mkdir /mnt/sdcard 0000 system system
     symlink /mnt/sdcard /sdcard
 
