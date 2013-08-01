@@ -143,6 +143,9 @@ on post-fs
     #sd card test 
     mount -t vfat /dev/block/mmcblk0p14 /storage/sdcard0
     
+	#external card test
+	mount -t vfat /dev/block/mmcblk1p1 /storage/sdcard1
+    
     # mount shared so changes propagate into child namespaces
     mount rootfs rootfs / shared rec
     mount tmpfs tmpfs /mnt/secure private rec
@@ -544,17 +547,4 @@ service mdnsd /system/bin/mdnsd
     socket mdnsd stream 0660 mdnsr inet
     disabled
     oneshot
-
-# Always start adbd on userdebug and eng builds
-    on property:ro.debuggable=1
-    
-#write /sys/class/android_usb/android0/enable 1
-#start adbd
-    setprop service.adb.root 1
-    
-# Restart adbd so it can run as root
-    on property:service.adb.root=1
-    write /sys/class/android_usb/android0/enable 0
-    restart adbd
-    write /sys/class/android_usb/android0/enable 1
     
