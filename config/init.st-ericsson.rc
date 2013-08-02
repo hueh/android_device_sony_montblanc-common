@@ -3,23 +3,27 @@ import init.st-ericsson.device.rc
 
 on init
 
-    # for backwards compatibility
-    
-    mkdir /mnt 0755 root system
-    mkdir /storage 0775 system sdcard_r
-    mkdir /storage/sdcard0 0775 system system
-    mkdir /storage/sdcard1 0775 system system
-    mkdir /storage/usbdisk 0775 system system
-    symlink /storage/sdcard0 /sdcard
-    symlink /storage/sdcard0 /mnt/sdcard
-    symlink /storage/sdcard1 /extSdCard
-    symlink /storage/sdcard1 /mnt/extSdCard
-    symlink /storage/usbdisk /usbdisk
-    symlink /storage/usbdisk /mnt/usbdisk
-
+    # Internal SDcard partition mount points
     export EXTERNAL_STORAGE /storage/sdcard0
-    export SECONDARY_STORAGE /storage/sdcard1
-    export EXTERNAL_STORAGE_USB /mnt/usbdisk
+    mkdir /storage/sdcard0 0000 system system
+
+    # Create symlink
+    # for backwards compatibility
+    symlink /storage/sdcard0 /mnt/sdcard
+    symlink /storage/sdcard0 /sdcard
+
+    # External SDcard support
+    export SECONDARY_STORAGE /storage/sdcard1:/storage/usbdisk
+    mkdir /storage/sdcard1 0000 system system
+    symlink /storage/sdcard1 /sdcard1
+    symlink /storage/sdcard1 /ext_card
+    symlink /storage/sdcard1 /mnt/ext_card
+    
+    # External USB mass storage support
+    export EXTERNAL_STORAGE_USB /storage/usbdisk
+    mkdir /storage/usbdisk 0000 system system
+    symlink /storage/usbdisk /mnt/usbdisk
+    symlink /storage/usbdisk /usbdisk
 
     # setup the global environment
     export OMX_STE_ENS_COMPONENTS_DIR /system/lib/ste_omxcomponents/
