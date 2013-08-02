@@ -81,7 +81,6 @@ PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
 # Custom init / uevent
 PRODUCT_COPY_FILES += \
-    device/sony/montblanc-common/config/02sdcard:system/etc/init.d/02sdcard \
     device/sony/montblanc-common/config/init.rc:root/init.rc \
     device/sony/montblanc-common/config/fstab.st-ericsson:root/fstab.st-ericsson \
     device/sony/montblanc-common/config/init.st-ericsson.rc:root/init.st-ericsson.rc \
