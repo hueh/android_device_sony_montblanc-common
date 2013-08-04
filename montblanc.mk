@@ -106,9 +106,15 @@ PRODUCT_COPY_FILES += \
     device/sony/montblanc-common/config/gps.conf:system/etc/gps.conf \
     device/sony/montblanc-common/config/cacert.txt:system/etc/suplcert/cacert.txt
 
-#BT
-PRODUCT_COPY_FILES += \
-    device/sony/montblanc-common/bluetooth/bt_vendor.conf:system/etc/bluetooth/bt_vendor.conf 
+# bluetooth BlueZ config
+PRODUCT_PACKAGES += \
+    bluetoothd \
+    hciconfig \
+    hcitool \
+    brcm_patchram_plus
+
+BOARD_BLUETOOTH_DOES_NOT_USE_RFKILL := false
+BOARD_BLUETOOTH_USES_HCIATTACH_PROPERTY := false
 
 
 PRODUCT_PROPERTY_OVERRIDES += \
