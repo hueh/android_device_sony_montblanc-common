@@ -105,16 +105,26 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/sony/montblanc-common/config/gps.conf:system/etc/gps.conf \
     device/sony/montblanc-common/config/cacert.txt:system/etc/suplcert/cacert.txt
+    
+# Bluez
+PRODUCT_COPY_FILES += \
+    system/bluetooth/data/audio.conf:system/etc/bluetooth/audio.conf \
+    system/bluetooth/data/auto_pairing.conf:system/etc/bluetooth/auto_pairing.conf \
+    system/bluetooth/data/blacklist.conf:system/etc/bluetooth/blacklist.conf \
+    system/bluetooth/data/input.conf:system/etc/bluetooth/input.conf \
+    system/bluetooth/data/main.le.conf:system/etc/bluetooth/main.conf \
+    system/bluetooth/data/network.conf:system/etc/bluetooth/network.conf \
+    system/bluetooth/data/stack.conf:system/etc/bluetooth/stack.conf
 
-# bluetooth BlueZ config
+# Bluez
 PRODUCT_PACKAGES += \
+    Bluetooth2 \
     bluetoothd \
+    hciattach \
     hciconfig \
     hcitool \
-    brcm_patchram_plus
-
-BOARD_BLUETOOTH_DOES_NOT_USE_RFKILL := false
-BOARD_BLUETOOTH_USES_HCIATTACH_PROPERTY := false
+    javax.btobex \
+    libbluetoothd
 
 
 PRODUCT_PROPERTY_OVERRIDES += \
