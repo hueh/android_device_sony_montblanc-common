@@ -105,6 +105,15 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/sony/montblanc-common/config/gps.conf:system/etc/gps.conf \
     device/sony/montblanc-common/config/cacert.txt:system/etc/suplcert/cacert.txt
+    
+# Unofficial packages that I used from trees outside AOSP
+PRODUCT_PACKAGES += \
+    Stk \
+    Superuser \
+    su 
+
+PRODUCT_COPY_FILES += \
+	vendor/PolishBlood/prebuilt/etc/apns-conf.xml:system/etc/apns-conf.xml
 
 
 PRODUCT_PROPERTY_OVERRIDES += \
