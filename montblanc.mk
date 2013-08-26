@@ -104,10 +104,6 @@ PRODUCT_PACKAGES += \
     Superuser \
     su 
 
-PRODUCT_COPY_FILES += \
-	vendor/PolishBlood/prebuilt/etc/apns-conf.xml:system/etc/apns-conf.xml
-
-
 PRODUCT_PROPERTY_OVERRIDES += \
     sys.mem.max_hidden_apps=10
 
