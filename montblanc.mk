@@ -1,7 +1,5 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
-$(call inherit-product, device/sony/montblanc-common/recovery/recovery.mk)
-
 $(call inherit-product-if-exists, vendor/sony/montblanc-common/montblanc-common-vendor.mk)
 
 
@@ -85,12 +83,6 @@ PRODUCT_COPY_FILES += \
     device/sony/montblanc-common/config/fstab.st-ericsson:root/fstab.st-ericsson \
     device/sony/montblanc-common/config/init.st-ericsson.rc:root/init.st-ericsson.rc \
     device/sony/montblanc-common/config/ueventd.st-ericsson.rc:root/ueventd.st-ericsson.rc
-
-# Recovery bootstrap script
-PRODUCT_COPY_FILES += \
-    device/sony/montblanc-common/recovery/bootrec:root/sbin/bootrec \
-    device/sony/montblanc-common/recovery/usbid_init.sh:root/sbin/usbid_init.sh \
-    device/sony/montblanc-common/recovery/postrecoveryboot.sh:root/sbin/postrecoveryboot.sh
 
 
 # HW Configs
